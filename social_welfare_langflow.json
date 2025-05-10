@@ -1,0 +1,52 @@
+{
+  "nodes": [
+    {
+      "id": "input_node",
+      "type": "PythonNode",
+      "name": "Applicant Input",
+      "params": {
+        "code": "\ndef applicant_input(params):\n    return {\n        \"name\": params[\"name\"],\n        \"income\": float(params[\"income\"]),\n        \"dependents\": int(params[\"dependents\"]),\n        \"pdf_file\": params[\"pdf_file\"],\n        \"img_file\": params[\"img_file\"],\n        \"audio_file\": params[\"audio_file\"]\n    }\n"
+      }
+    },
+    {
+      "id": "processing_node",
+      "type": "PythonNode",
+      "name": "Process Application",
+      "params": {
+        "code": "\nfrom PyPDF2 import PdfReader\nfrom PIL import Image\nimport openai\nimport os\n\ndef process_application(applicant_data, openai_key):\n    os.environ[\"OPENAI_API_KEY\"] = openai_key\n    results = {\n        'pdf_text': '',\n        'id_verified': False,\n        'transcript': '',\n        'sentiment': 'Neutral'\n    }\n\n    try:\n        pdf_reader = PdfReader(applicant_data['pdf_file'])\n        results['pdf_text'] = \" \".join([page.extract_text() for page in pdf_reader.pages])[:500]\n    except:\n        results['pdf_text'] = '[PDF Extraction Failed]'\n\n    try:\n        Image.open(applicant_data['img_file']).verify()\n        results['id_verified'] = True\n    except:\n        results['id_verified'] = False\n\n    try:\n        client = openai.OpenAI(api_key=openai_key)\n        applicant_data['audio_file'].seek(0)\n        transcript = client.audio.transcriptions.create(\n            file=(\"audio.wav\", applicant_data['audio_file'].read(), \"audio/wav\"),\n            model=\"whisper-1\",\n            response_format=\"text\"\n        )\n        results['transcript'] = transcript[:500]\n        results['sentiment'] = 'Positive' if 'help' in transcript.lower() else 'Neutral'\n    except:\n        results['transcript'] = '[Audio Transcription Failed]'\n\n    return results\n"
+      }
+    },
+    {
+      "id": "decision_node",
+      "type": "LLMChain",
+      "name": "Eligibility Decision",
+      "params": {
+        "prompt": "\nAnalyze ONLY this data:\n- Name: {name}\n- Income: ${income}\n- Dependents: {dependents}\n- ID Verified: {id_verified}\n- Document Content: {pdf_text}\n- Voice Sentiment: {sentiment}\n\nApply EXACTLY these rules:\n1. ID must be verified\n2. Income must be under $400\n3. At least 2 dependents\n\nRespond in format:\n\n## Eligibility Result\n**Status:** Approved/Rejected  \n**Reason:** [concise reason based on rules]\n\n## Verification Summary\n- ID Verified: Yes/No\n- Income: $[amount] [meets/doesn't meet] requirement\n- Dependents: [number] [meets/doesn't meet] requirement\n",
+        "temperature": 0.1,
+        "llm_model": "gpt-4"
+      }
+    },
+    {
+      "id": "output_node",
+      "type": "PythonNode",
+      "name": "Format Output",
+      "params": {
+        "code": "\ndef format_output(result_text):\n    return {\"decision\": result_text}\n"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "input_node",
+      "target": "processing_node"
+    },
+    {
+      "source": "processing_node",
+      "target": "decision_node"
+    },
+    {
+      "source": "decision_node",
+      "target": "output_node"
+    }
+  ]
+}

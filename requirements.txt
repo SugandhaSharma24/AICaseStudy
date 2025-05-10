@@ -1,0 +1,10 @@
+transformers
+torch
+faiss-cpu
+spacy
+sentence-transformers
+streamlit
+matplotlib
+networkx
+PyPDF2
+langflow

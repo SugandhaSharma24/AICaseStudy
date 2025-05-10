@@ -1,0 +1,11 @@
+name,age,income,dependents,employment_status,housing_status,health_issues,notes
+Fatima Ali,38,450,3,Unemployed,Rented,None,Lost job during COVID; taking care of 3 children
+Mohammed Khan,42,600,2,Self-Employed,Owns,None,Income is unstable; wife recently passed away
+Aisha Noor,29,320,1,Unemployed,Rented,Diabetes,Single mother; struggling to pay rent
+Yusuf Haddad,54,480,4,Part-time,Rented,None,Caring for elderly mother and disabled son
+Sara Ibrahim,35,700,2,Employed,Rented,None,Working minimum wage; not enough for family needs
+Omar Nabil,27,290,0,Unemployed,Lives with parents,None,Looking for work; no dependents
+Laila Fathi,46,510,3,Self-Employed,Owns,Hypertension,Owns a small shop; low income due to inflation
+Khaled Zaki,60,250,2,Pensioner,Owns,Heart Disease,Retired; medical bills very high
+Nour El-Din,33,520,1,Employed,Shared,None,Lives in shared housing; supports younger sibling
+Huda Salem,40,390,2,Unemployed,Rented,None,Domestic violence survivor; in shelter
