@@ -25,3 +25,4 @@ python-dotenv
 numpy
 Pillow
 chromadb
+langdetect
