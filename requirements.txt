@@ -24,3 +24,4 @@ llm_guard
 python-dotenv
 numpy
 Pillow
+chromadb
