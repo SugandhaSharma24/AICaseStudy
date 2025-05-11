@@ -24,6 +24,6 @@ llm-guard==0.1.13
 python-dotenv
 numpy
 Pillow
-chromadb==<desired_version>
-embedchain==<desired_version>
-pysqlite3
+chromadb==0.4.14         # Use compatible version here
+embedchain==0.1.55        # Use compatible version here
+pysqlite3-binary==0.5.2
