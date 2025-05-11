@@ -28,3 +28,6 @@ flask
 embedchain
 langchain
 tiktoken
+aisuite
+langgraph
+docstring-parser
