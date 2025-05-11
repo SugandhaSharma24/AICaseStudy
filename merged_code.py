@@ -6,6 +6,7 @@ from PIL import Image
 from openai import OpenAI
 from crewai import Agent, Task, Crew  # For Crew AI
 from langgraph.graph import StateGraph, END  # For LangGraph
+from typing import TypedDict
 
 def run():
     # Load data
@@ -180,13 +181,13 @@ def run():
     # Streamlit UI
     with st.sidebar:
         st.header("📥 Application Inputs")
-        openai_key = st.text_input("🔑 OpenAI API Key", type="password")
-        selected_applicant = st.selectbox("👤 Select Applicant", df['name'].unique())
-        pdf_file = st.file_uploader("📑 Supporting Document (PDF)", type=["pdf"])
-        img_file = st.file_uploader("🖼️ ID Verification", type=["jpg", "jpeg", "png"])
-        audio_file = st.file_uploader("🔊 Voice Explanation", type=["mp3", "wav"])
-        framework_choice = st.selectbox("Select Framework", ["Crew AI", "LangGraph"])
-        analyze_btn = st.button("🚀 Analyze Application")
+        openai_key = st.text_input("🔑 OpenAI API Key", type="password",key="api_key_input")
+        selected_applicant = st.selectbox("👤 Select Applicant", df['name'].unique(), key="eligibility_applicant_selectbox")
+        pdf_file = st.file_uploader("📑 Supporting Document (PDF)", type=["pdf"], key="eligibility_pdf_uploader")
+        img_file = st.file_uploader("🖼️ ID Verification", type=["jpg", "jpeg", "png"], key="eligibility_image_uploader" )
+        audio_file = st.file_uploader("🔊 Voice Explanation", type=["mp3", "wav"], key="eligibility_audio_uploader" )
+        framework_choice = st.selectbox("Select Framework", ["Crew AI", "LangGraph"], key="eligibility_framework_selectbox")
+        analyze_btn = st.button("🚀 Analyze Application", key="eligibility_analyze_button")
 
     if analyze_btn:
         if not openai_key:

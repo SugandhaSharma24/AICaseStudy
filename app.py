@@ -1,30 +1,36 @@
 import streamlit as st
-st.set_page_config(page_title="MultitoolApp", layout="wide")
 import chatbot
 import merged_code
 import eligibility_app
+import Mcp_agent
 
+st.set_page_config(page_title="MultitoolApp", layout="wide")
 
+# Sidebar navigation instead of tabs
+st.sidebar.title("🧭 Navigation")
+page = st.sidebar.radio("Go to:", ["Eligibility App", "AI Chatbot", "Knowledge Graph", "MCP"])
 
-tabs = st.tabs(["Eligibility App", "AI Chatbot"])
-
-# Tab 1: Merged eligibility decision app
-with tabs[0]:
+# Page routing
+if page == "Eligibility App":
     if hasattr(merged_code, 'run'):
         merged_code.run()
     else:
         st.error("Eligibility module (merged_code) not configured properly.")
 
-# Tab 2: AI Chatbot
-with tabs[1]:
+elif page == "AI Chatbot":
     if hasattr(chatbot, 'run'):
         chatbot.run()
     else:
         st.error("Chatbot module not configured properly.")
-# Tab 3: Knowledge Graph
-with tabs[1]:
+
+elif page == "Knowledge Graph":
     if hasattr(eligibility_app, 'run'):
         eligibility_app.run()
     else:
-        st.error("Knowledge graph module not configured properly.")        
-       
+        st.error("Knowledge graph module not configured properly.")
+
+elif page == "MCP":
+    if hasattr(Mcp_agent, 'run'):
+        Mcp_agent.run()
+    else:
+        st.error("MCP agent module not configured properly.")

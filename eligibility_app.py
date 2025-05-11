@@ -111,7 +111,6 @@ def run():
 
 
     # --- Streamlit App ---
-    st.set_page_config(page_title="Social Welfare Knowledge Graph", layout="wide")
     st.title("📊 Social Welfare Knowledge Graph")
 
     st.markdown("---")
