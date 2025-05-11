@@ -23,4 +23,4 @@ faiss-cpu
 langflow
 langgraph
 langfuse
-llm-guard==0.1.7
+llm-guard==0.3.15
