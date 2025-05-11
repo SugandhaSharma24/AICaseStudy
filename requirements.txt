@@ -19,9 +19,8 @@ langdetect
 python-dotenv
 numpy
 Pillow
-# Optional/experimental ones below — comment out if issues arise:
-# faiss-cpu
-# langflow
-# langgraph
-# langfuse
-# llm-guard
+faiss-cpu
+langflow
+langgraph
+langfuse
+llm-guard
