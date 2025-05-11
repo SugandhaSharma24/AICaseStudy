@@ -24,5 +24,6 @@ llm-guard==0.1.13
 python-dotenv
 numpy
 Pillow
-chromadb
-sqlite3
+chromadb==<desired_version>
+embedchain==<desired_version>
+sqlite==3.35.0
