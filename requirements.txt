@@ -21,7 +21,7 @@ openai
 langgraph
 langfuse
 langdetect
-llm-guard>=0.1.13
+llm-guard==0.1.13
 python-dotenv
 numpy
 Pillow
