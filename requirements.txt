@@ -8,7 +8,7 @@ SpeechRecognition
 pydub
 regex
 transformers
-torch
+torch==2.7.0
 spacy
 sentence-transformers
 matplotlib
