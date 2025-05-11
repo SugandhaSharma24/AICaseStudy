@@ -20,6 +20,7 @@ crewai
 openai
 langgraph
 langfuse
+langdetect
 llm_guard
 python-dotenv
 numpy
