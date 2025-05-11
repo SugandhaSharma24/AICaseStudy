@@ -3,7 +3,9 @@ import chatbot
 import merged_code
 import eligibility_app
 import Mcp_agent
-
+import sys
+import pysqlite3
+sys.modules["sqlite3"] = pysqlite3
 st.set_page_config(page_title="MultitoolApp", layout="wide")
 
 # Sidebar navigation instead of tabs
