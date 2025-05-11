@@ -28,4 +28,5 @@ crewai==0.118.0
 embedchain==0.2.0
 chromadb==0.5.0  # Optional, based on your dependencies
 numpy==1.21.2
-pysqlite3
+pydantic
+langchain
