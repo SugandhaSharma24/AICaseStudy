@@ -22,5 +22,6 @@ PyPDF2>=3.0.0
 Pillow==9.5.0
 openai==0.28.0
 langgraph==0.0.4
-crewai==0.1.0
+crewai==0.118.0
 numpy==1.23.0
+flask
