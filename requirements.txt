@@ -9,18 +9,19 @@ pydub
 regex
 transformers
 torch
-faiss-cpu
 spacy
 sentence-transformers
 matplotlib
 networkx
 PyPDF2
-langflow
 openai
-langgraph
-langfuse
 langdetect
-llm-guard
 python-dotenv
 numpy
 Pillow
+# Optional/experimental ones below — comment out if issues arise:
+# faiss-cpu
+# langflow
+# langgraph
+# langfuse
+# llm-guard
