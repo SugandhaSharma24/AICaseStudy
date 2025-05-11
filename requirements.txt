@@ -16,7 +16,6 @@ matplotlib
 networkx
 PyPDF2
 langflow
-crewai
 openai
 langgraph
 langfuse
