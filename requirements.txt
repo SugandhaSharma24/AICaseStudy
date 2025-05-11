@@ -21,7 +21,7 @@ openai
 langgraph
 langfuse
 langdetect
-llm_guard
+llm-guard
 python-dotenv
 numpy
 Pillow
