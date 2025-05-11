@@ -23,5 +23,8 @@ Pillow==9.5.0
 openai==0.28.0
 langgraph==0.0.4
 crewai==0.118.0
-numpy==1.23.0
+numpy==1.23.5
 flask
+embedchain
+langchain
+tiktoken
