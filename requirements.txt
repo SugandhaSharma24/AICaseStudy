@@ -26,4 +26,4 @@ numpy
 Pillow
 chromadb==<desired_version>
 embedchain==<desired_version>
-sqlite==3.35.0
+pysqlite3
