@@ -16,13 +16,15 @@ matplotlib
 networkx
 PyPDF2
 langflow
-crewai
 openai
 langgraph
 langfuse
 langdetect
-llm-guard
+llm-guard==0.1.13
 python-dotenv
 numpy
 Pillow
-
+chromadb==0.4.22        # Critical security update
+embedchain==0.1.55       
+pysqlite3-binary==0.5.2
+cryptography==38.0.4    # Resolves OpenSSL issues
